@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101b26">
+  <meta name="description" content="VOLKOVITSKY AI COMPANY · Visual V3 — изолированный визуальный пилот на движке V5.">
+  <title>Visual V3 — Pixel Office · VOLKOVITSKY AI COMPANY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+</head>
+<body data-public-demo="cursor">
+  <div class="app-shell" id="app">
+    <header class="app-head">
+      <div class="branding">
+        <span class="logo" aria-hidden="true">V<span class="pixel"></span></span>
+        <div class="brand-words">
+          <span class="eyebrow">VOLKOVITSKY AI COMPANY</span>
+          <strong>PIXEL OFFICE <em>ART V3</em></strong>
+        </div>
+      </div>
+      <div class="header-center">
+        <div class="status-light"><span class="dot"></span><span id="modeHeadline">ДЕМО · ЖИВОЙ ОФИС</span></div>
+        <small id="systemState">ПУБЛИЧНАЯ DEMO-КОПИЯ · БЕЗ API</small>
+      </div>
+      <div class="head-actions">
+        <div class="mode-switch" aria-label="Режим офиса">
+          <button id="modeDemo" class="active" type="button" aria-pressed="true">Демо</button>
+          <button id="modeLive" type="button" aria-pressed="false">Live</button>
+        </div>
+        <button class="subtle-button hidden-mobile" id="newProjectTop" type="button">＋ Проект</button>
+        <button class="mobile-tools" id="mobileTools" type="button" aria-label="Добавить проект или сотрудника" aria-expanded="false">＋</button>
+        <div class="mobile-action-menu" id="mobileActionMenu" hidden>
+          <button type="button" id="mobileNewProject">＋ Новый проект</button>
+          <button type="button" id="mobileNewAgent">＋ Новый сотрудник</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar project-sidebar" aria-label="Проектные кабинеты">
+        <div class="aside-title">
+          <span class="eyebrow">КОМПАНИЯ</span>
+          <h2>Проектные офисы</h2>
+          <p>Кабинеты появляются из реестра проектов.</p>
+        </div>
+        <div class="floor-tabs" id="floorTabs" aria-label="Этажи"></div>
+        <div class="office-list" id="officeList"></div>
+        <div class="sidebar-foot">
+          <button type="button" id="newProject" class="line-button"><span>＋</span> Новый проект</button>
+          <button type="button" id="newAgent" class="line-button"><span>＋</span> Новый сотрудник</button>
+          <div class="scaling-message">Новый проект → кабинет<br>5-й сотрудник → дополнительный кабинет<br>7-й кабинет → новый этаж</div>
+        </div>
+      </aside>
+
+      <main class="stage-column" id="stageColumn">
+        <section class="stage-heading">
+          <div>
+            <div class="stage-kicker"><span class="live-orb"></span> ВИРТУАЛЬНОЕ ПРОСТРАНСТВО <span class="stage-sep">/</span> <span id="floorLabel">1 ЭТАЖ</span></div>
+            <h1 id="roomHeadline">Главный штаб</h1>
+            <p id="roomDescription">Здесь агенты получают задачи, работают и перемещаются.</p>
+          </div>
+          <div class="stage-action-pair">
+            <button class="tour-start" type="button" id="tourToggle" aria-pressed="false" aria-label="Начать экскурсию по офису">▶ <span>Показать офис</span></button>
+            <button class="icon-text-button" type="button" id="viewAll">▦ <span>Весь этаж</span></button>
+            <button class="scene-mode-toggle" type="button" id="sceneMode" aria-label="Развернуть сцену" title="Развернуть сцену" aria-pressed="false">⛶</button>
+          </div>
+        </section>
+
+          <div class="tour-hud" id="tourHUD" hidden aria-label="Экскурсия по офису">
+            <div class="tour-hud-header">
+              <span class="tour-hud-eyebrow" id="tourCount">01 / 05 · DEMO</span>
+              <button type="button" id="tourStop" aria-label="Закончить экскурсию" title="Закончить экскурсию">×</button>
+            </div>
+            <strong id="tourRoom">Главный штаб</strong>
+            <p id="tourDescription">Обзор Главного штаба</p>
+            <div class="tour-progress" role="progressbar" aria-label="Время просмотра кабинета" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="tourProgress"></div></div>
+            <div class="tour-actions">
+              <button type="button" id="tourPrevious" aria-label="Предыдущий кабинет">← Назад</button>
+              <button type="button" id="tourPause" aria-pressed="false">Ⅱ Пауза</button>
+              <button type="button" id="tourNext">Далее →</button>
+            </div>
+          </div>
+
+        <div class="stage-outer" id="stageOuter">
+          <canvas id="officeCanvas" role="img" aria-label="Динамический пиксельный офис: комнаты, рабочие места и движущиеся персонажи"></canvas>
+          <div class="stage-top-note" id="stageModeNote">DEMO · события и перемещения смоделированы</div>
+          <div class="watch-note" id="watchNote" hidden aria-live="off"></div>
+          <div class="stage-controls">
+            <button id="zoomOut" title="Отдалить" aria-label="Отдалить">−</button>
+            <button id="focusHQ" title="Вернуться в штаб" aria-label="Вернуться в штаб">⌂</button>
+            <button id="zoomIn" title="Приблизить" aria-label="Приблизить">＋</button>
+          </div>
+          <div class="help-tip">Перемещай карту пальцем · нажми на комнату или сотрудника</div>
+        </div>
+
+        <div class="stage-footer">
+          <div class="count-chips">
+            <span><strong id="countProjects">5</strong> проектов</span>
+            <span><strong id="countRooms">5</strong> кабинетов</span>
+            <span><strong id="countAgents">6</strong> сотрудников</span>
+            <span><strong id="countFloors">1</strong> этажей</span>
+          </div>
+          <button class="stage-help" type="button" id="showStaff">◉ <span>Сотрудники</span></button>
+        </div>
+      </main>
+
+      <aside class="sidebar inspector" id="inspector" aria-label="Состояние офиса">
+        <div class="inspector-head">
+          <span class="eyebrow">НАБЛЮДЕНИЕ</span>
+          <button type="button" id="closeInspector" aria-label="Закрыть панель">×</button>
+        </div>
+        <div class="inspector-feature">
+          <img class="staff-portrait" id="selectedPortrait" alt="" hidden>
+          <span class="feature-icon" id="featureIcon">▣</span>
+          <h2 id="inspectorTitle">Главный штаб</h2>
+          <p id="inspectorDescription">Выбери кабинет или сотрудника.</p>
+          <button type="button" id="observeAgent" class="observe-agent" hidden>◎ Наблюдать за сотрудником</button>
+          <button type="button" id="demoMeetingButton" class="observe-agent demo-meeting-button" hidden>▶ Демо-совещание</button>
+        </div>
+        <div class="inspector-block">
+          <div class="block-head"><span>Сотрудники</span><strong id="staffCount">0</strong></div>
+          <div id="staffRoster" class="staff-list"></div>
+        </div>
+        <div class="inspector-block activity-block">
+          <div class="block-head"><span>События офиса</span><span class="demo-label" id="eventModeBadge">ДЕМО</span></div>
+          <div id="activityList" class="activity-list"></div>
+        </div>
+        <div class="inspector-warning" id="liveWarning" hidden>Live-источник пока не подключён. Реальное выполнение задач не показывается и не запускается.</div>
+      </aside>
+    </div>
+
+    <footer class="composer">
+      <div class="composer-symbol" aria-hidden="true">✳</div>
+      <div class="composer-text">
+        <label for="taskInput">ОДНА ЗАДАЧА — ОДИН ВХОД</label>
+        <textarea id="taskInput" rows="1" maxlength="1200" placeholder="Что поручить штабу? Например: Проверь BudgetBot и найди ошибку в остатках."></textarea>
+      </div>
+      <button type="button" id="sendTask" class="primary-action">Поручить штабу <span>↗</span></button>
+    </footer>
+  </div>
+
+  <dialog id="entityDialog" class="entity-dialog">
+    <form id="entityForm" method="dialog">
+      <header class="dialog-head">
+        <div><span class="eyebrow" id="dialogEyebrow">НОВАЯ СУЩНОСТЬ</span><h2 id="dialogTitle">Новый проект</h2></div>
+        <button type="button" id="dialogClose" aria-label="Закрыть">×</button>
+      </header>
+      <p id="dialogHelp">Изменения затрагивают только данные изолированного DEMO.</p>
+      <label for="entityName" id="entityNameLabel">Название</label>
+      <input id="entityName" maxlength="56" autocomplete="off" required placeholder="Название проекта">
+      <div class="project-target" id="targetRow" hidden>
+        <label for="entityProject">Рабочий кабинет</label>
+        <select id="entityProject"></select>
+      </div>
+      <div class="dialog-message" id="dialogMessage" role="alert"></div>
+      <footer>
+        <button type="button" class="secondary-action" id="dialogCancel">Отмена</button>
+        <button type="submit" class="primary-action" id="dialogSubmit">Создать</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

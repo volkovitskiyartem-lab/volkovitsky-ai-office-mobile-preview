@@ -1,0 +1,23 @@
+{
+  "frameWidth": 40,
+  "frameHeight": 57,
+  "scale": 3,
+  "variants": 8,
+  "framesPerAnimation": 4,
+  "animations": [
+    "idle",
+    "walk-down",
+    "walk-side",
+    "walk-up",
+    "sit",
+    "type",
+    "drink",
+    "read",
+    "stretch",
+    "wave",
+    "listen",
+    "explain",
+    "point"
+  ],
+  "image": "team-frames.png"
+}
