@@ -22,3 +22,5 @@ V4.8 demo: /next-v48-demo/ — animated R2 office plus synthetic executor and ta
 V4.9 demo: /next-v49-demo/ — synthetic task-to-seat navigation, retains V4.8. No live data.
 
 V4.10 demo: /next-v410-demo/ — single-message form with three fixed synthetic examples, not a second routing engine. No live data.
+
+V4.11 demo: /next-v411-demo/ — policy layout and fixed examples only; no private quotas, execution or routing API.

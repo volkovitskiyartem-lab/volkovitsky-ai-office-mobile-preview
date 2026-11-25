@@ -1,0 +1,8 @@
+{
+  "source_commit": "36b7628",
+  "policy_commit": "34bb69e",
+  "source": "Next V4.11 policy preview, V4.10 living demo",
+  "mode": "public_demo",
+  "real_data": false,
+  "network": false
+}
