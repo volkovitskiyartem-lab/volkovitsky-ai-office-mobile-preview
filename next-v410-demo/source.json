@@ -1,0 +1,8 @@
+{
+  "source_commit": "1ed45db",
+  "source": "Next V4.10 one-message intake layout on V4.9 demo",
+  "mode": "public_demo",
+  "real_data": false,
+  "network": false,
+  "routing": "three fixed examples only"
+}
