@@ -18,3 +18,5 @@ Next V4.6 Living: /next-v46-living/ restores original V2.1 schedules and V4.3 qu
 R2: /next-v46-living-r2/ — five English titles now use the actual board plane, bounded text widths. Previous preview remains accessible. Browser regression PASS at 1440/390/320, no external network.
 
 V4.8 demo: /next-v48-demo/ — animated R2 office plus synthetic executor and task journal layout; no internal data.
+
+V4.9 demo: /next-v49-demo/ — synthetic task-to-seat navigation, retains V4.8. No live data.
