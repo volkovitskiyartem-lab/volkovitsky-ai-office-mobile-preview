@@ -16,3 +16,5 @@ Pixel Office Next Management V4.6: /next-v46/ — current visual line; the previ
 Next V4.6 Living: /next-v46-living/ restores original V2.1 schedules and V4.3 quota UI on V4.6 geometry. All actors and quota values are explicitly synthetic; no API, real telemetry, persistence or operations. Chrome QA: 1440, 390, 320 px; 13 staff, five moving actors, nine rooms, four quota meters plus Grok sample, pause, zero JS errors or external requests.
 
 R2: /next-v46-living-r2/ — five English titles now use the actual board plane, bounded text widths. Previous preview remains accessible. Browser regression PASS at 1440/390/320, no external network.
+
+V4.8 demo: /next-v48-demo/ — animated R2 office plus synthetic executor and task journal layout; no internal data.
