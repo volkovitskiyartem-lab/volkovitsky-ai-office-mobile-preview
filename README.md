@@ -24,3 +24,5 @@ V4.9 demo: /next-v49-demo/ — synthetic task-to-seat navigation, retains V4.8. 
 V4.10 demo: /next-v410-demo/ — single-message form with three fixed synthetic examples, not a second routing engine. No live data.
 
 V4.11 demo: /next-v411-demo/ — policy layout and fixed examples only; no private quotas, execution or routing API.
+
+V4.12 demo: /next-v412-demo/ - fictional result and approval cards, mobile task-first navigation and shared subscription layout, derived exclusively from the public V4.11 demo. No backend, real task records, real quota, credentials, persistence or network operations. Previous versions retained.
