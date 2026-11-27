@@ -26,3 +26,5 @@ V4.10 demo: /next-v410-demo/ — single-message form with three fixed synthetic 
 V4.11 demo: /next-v411-demo/ — policy layout and fixed examples only; no private quotas, execution or routing API.
 
 V4.12 demo: /next-v412-demo/ - fictional result and approval cards, mobile task-first navigation and shared subscription layout, derived exclusively from the public V4.11 demo. No backend, real task records, real quota, credentials, persistence or network operations. Previous versions retained.
+
+V4.13 demo: /next-v413-demo/ - camera drag, pointer-anchored wheel zoom, one-finger pan, two-finger pinch, keyboard navigation and home reset. Previous versions retained; fictional-only static page.
