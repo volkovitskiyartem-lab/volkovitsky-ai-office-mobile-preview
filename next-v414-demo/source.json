@@ -1,0 +1,8 @@
+{
+  "source": "Public V4.13 demo with fictional VOID VIBE wing",
+  "public_base_commit": "c256a89408948e19eb5d91ac8df0600bde9c37ea",
+  "mode": "public_demo",
+  "real_data": false,
+  "network": false,
+  "sha256": "f8ee9e91f10d73e245ff479bc407f62a3b0b5c06b58bc89a32ee369a81a88f3e"
+}

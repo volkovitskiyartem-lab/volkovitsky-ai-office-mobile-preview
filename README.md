@@ -28,3 +28,5 @@ V4.11 demo: /next-v411-demo/ — policy layout and fixed examples only; no priva
 V4.12 demo: /next-v412-demo/ - fictional result and approval cards, mobile task-first navigation and shared subscription layout, derived exclusively from the public V4.11 demo. No backend, real task records, real quota, credentials, persistence or network operations. Previous versions retained.
 
 V4.13 demo: /next-v413-demo/ - camera drag, pointer-anchored wheel zoom, one-finger pan, two-finger pinch, keyboard navigation and home reset. Previous versions retained; fictional-only static page.
+
+V4.14 demo: /next-v414-demo/ — fictional VOID VIBE wing, three workstreams and seven proposed/unassigned role desks, distinct from animated demo employees. Preserves V4.13 camera and prior versions. No backend or runtime access.
